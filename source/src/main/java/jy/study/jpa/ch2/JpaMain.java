@@ -1,4 +1,6 @@
-package jy.study.jpa;
+package jy.study.jpa.ch2;
+
+import jy.study.jpa.Member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
