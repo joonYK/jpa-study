@@ -1,19 +1,28 @@
-plugins {
-    id 'java'
+
+allprojects {
+    group 'jy.study.jpa'
+    version '1.0-SNAPSHOT'
 }
 
-group 'jy.study.jpa'
-version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
+subprojects {
 
-dependencies {
-    // JPA 표준과 하이버네이트를 포함하는 라이브러리
-    implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.5.3.Final'
-    //H2 데이터베이스
-    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+    apply plugin: 'java'
 
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // JPA 표준과 하이버네이트를 포함하는 라이브러리
+        implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.5.3.Final'
+        //H2 데이터베이스
+        implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+
+        compileOnly 'org.projectlombok:lombok:1.18.20'
+        annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+        //testCompileOnly 'org.projectlombok:lombok:1.18.20'
+        //testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+    }
 }
