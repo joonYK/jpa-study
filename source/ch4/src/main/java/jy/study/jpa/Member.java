@@ -18,6 +18,7 @@ import java.util.Date;
 public class Member {
  
     @Id
+    @GeneratedValue
     @Column(name = "ID")
     private String id;
 
