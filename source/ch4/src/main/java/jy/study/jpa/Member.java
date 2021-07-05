@@ -9,14 +9,20 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "MEMBER")
+@Table(name = "MEMBER", uniqueConstraints = {
+        @UniqueConstraint(
+                name = "NAME_AGE_UNIQUE",
+                columnNames = {"NAME", "AGE"}
+        )
+})
 public class Member {
  
     @Id
     @Column(name = "ID")
     private String id;
-    
-    @Column(name = "NAME")
+
+    // 제약조건 : 회원 이름은 필수로 입력, 10자를 초과하면 안 됨.
+    @Column(name = "NAME", nullable = false, length = 10)
     private String username;
     
     private Integer age;
