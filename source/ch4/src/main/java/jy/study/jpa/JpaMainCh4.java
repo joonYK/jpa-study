@@ -20,6 +20,8 @@ public class JpaMainCh4 {
             //트랜잭션 시작
             tx.begin();
 
+            logic(em);
+
             //트랜잭션 커밋
             tx.commit();
         } catch (Exception e) {
@@ -31,5 +33,15 @@ public class JpaMainCh4 {
         }
         //엔티티 매니저 팩토리 종료
         emf.close();
+    }
+
+    private static void logic(EntityManager em) {
+        Board board = new Board();
+        em.persist(board);
+        System.out.println("board.id = " + board.getId());
+
+        Board2 board2 = new Board2();
+        em.persist(board2);
+        System.out.println("board2.id = " + board2.getId());
     }
 }

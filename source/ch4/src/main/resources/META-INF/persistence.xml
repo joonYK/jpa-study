@@ -3,6 +3,8 @@
              version="2.1">
     <persistence-unit name="jpa-study">
         <class>jy.study.jpa.Member</class>
+        <class>jy.study.jpa.Board</class>
+        <class>jy.study.jpa.Board2</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
