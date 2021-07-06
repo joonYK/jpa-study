@@ -1,4 +1,4 @@
-package jy.study.jpa;
+package jy.study.jpa.keyStrategy;
 
 import lombok.Getter;
 
@@ -11,7 +11,7 @@ import javax.persistence.*;
         sequenceName = "BOARD_SEQ",
         initialValue = 1, allocationSize = 1
 )
-public class Board2 {
+public class Sequence {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOARD_SEQ_GENERATOR")

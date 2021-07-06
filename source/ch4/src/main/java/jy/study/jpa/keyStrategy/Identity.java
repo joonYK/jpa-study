@@ -1,4 +1,4 @@
-package jy.study.jpa;
+package jy.study.jpa.keyStrategy;
 
 import lombok.Getter;
 
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Getter
 @Entity
-public class Board {
+public class Identity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
