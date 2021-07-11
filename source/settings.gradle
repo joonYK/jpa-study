@@ -2,4 +2,5 @@ rootProject.name = 'source'
 include 'ch4'
 include 'ch3'
 include 'ch2'
+include 'example'
 
