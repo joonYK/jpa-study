@@ -1,6 +1,6 @@
 package jy.study.jpa;
 
-public class MainCh5 {
+public class MainNoJPA {
 
     public static void main(String[] args) {
         Member member1 = new Member("member1", "회원1");
