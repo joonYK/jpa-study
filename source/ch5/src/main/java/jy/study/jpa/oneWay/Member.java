@@ -1,4 +1,4 @@
-package jy.study.jpa;
+package jy.study.jpa.oneWay;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

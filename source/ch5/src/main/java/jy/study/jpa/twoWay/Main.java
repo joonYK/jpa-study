@@ -1,4 +1,7 @@
-package jy.study.jpa;
+package jy.study.jpa.twoWay;
+
+import jy.study.jpa.oneWay.Member;
+import jy.study.jpa.oneWay.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,7 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class MainJPA {
+public class Main {
 
     public static void main(String[] args) {
         //엔티티 매니저 팩토리 생성
