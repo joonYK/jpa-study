@@ -1,8 +1,5 @@
 package jy.study.jpa.twoWay;
 
-import jy.study.jpa.oneWay.Member;
-import jy.study.jpa.oneWay.Team;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -30,14 +27,7 @@ public class Main {
             em.flush();
 
             //조회
-            search(em);
-
-            //수정
-            update(em);
-            em.flush();
-
-            //삭제
-            delete(em);
+            searchByTeam(em);
 
             //트랜잭션 커밋
             tx.commit();
@@ -54,9 +44,9 @@ public class Main {
     }
 
     static void insert(EntityManager em) {
-        Member member1 = new Member("member1", "회원1");
-        Member member2 = new Member("member2", "회원2");
-        Team team1 = new Team("team1", "팀1");
+        Member2 member1 = new Member2("member1", "회원1");
+        Member2 member2 = new Member2("member2", "회원2");
+        Team2 team1 = new Team2("team1", "팀1");
 
         em.persist(member1);
         em.persist(member2);
@@ -64,39 +54,15 @@ public class Main {
 
         member1.setTeam(team1);
         member2.setTeam(team1);
+        team1.getMembers().add(member1);
+        team1.getMembers().add(member2);
     }
 
-    static void search(EntityManager em) {
-        Member member = em.find(Member.class,"member1");
-        //객체 그래프 탐색
-        Team team = member.getTeam();
-        System.out.println("객체 그래프 탐색 : " + team);
+    static void searchByTeam(EntityManager em) {
+        Team2 team = em.find(Team2.class, "team1");
+        List<Member2> members = team.getMembers();
 
-        //JPQL
-        String jpql = "select m from Member m join m.team t where t.name=:teamName";
-
-        List<Member> resultList = em.createQuery(jpql, Member.class)
-                .setParameter("teamName", "팀1")
-                .getResultList();
-
-        System.out.println("[query] " + resultList);
-    }
-
-    static void update(EntityManager em) {
-        Team team2 = new Team("team2", "팀2");
-        em.persist(team2);
-
-        Member member = em.find(Member.class, "member1");
-        member.setTeam(team2);
-    }
-
-    static void delete(EntityManager em) {
-        Member member1 = em.find(Member.class, "member1");
-        Team team = member1.getTeam();
-        member1.setTeam(null);
-
-        //엔티티를 삭제하려면 연관관계를 끊어야 함.
-        em.remove(team);
+        System.out.println("회원 리스트 : " + members);
     }
 
 

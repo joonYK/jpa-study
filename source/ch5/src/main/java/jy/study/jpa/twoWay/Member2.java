@@ -9,11 +9,11 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = {"team"})
 @NoArgsConstructor
 @Entity
-@Table(name = "member2")
-public class Member {
+@Table
+public class Member2 {
 
     @Id
     @Column(name = "member_id")
@@ -23,9 +23,9 @@ public class Member {
 
     @ManyToOne
     @JoinColumn(name = "team_id")
-    private Team team;
+    private Team2 team;
 
-    public Member(String id, String username) {
+    public Member2(String id, String username) {
         this.id = id;
         this.username = username;
     }

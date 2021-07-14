@@ -4,8 +4,8 @@
     <persistence-unit name="jpa-study">
         <class>jy.study.jpa.oneWay.Member</class>
         <class>jy.study.jpa.oneWay.Team</class>
-        <class>jy.study.jpa.twoWay.Member</class>
-        <class>jy.study.jpa.twoWay.Team</class>
+        <class>jy.study.jpa.twoWay.Member2</class>
+        <class>jy.study.jpa.twoWay.Team2</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

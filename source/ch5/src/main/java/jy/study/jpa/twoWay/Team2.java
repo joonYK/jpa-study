@@ -9,11 +9,10 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "team2")
-public class Team {
+@Table
+public class Team2 {
 
     @Id
     @Column(name = "team_id")
@@ -22,5 +21,10 @@ public class Team {
     private String name;
 
     @OneToMany(mappedBy = "team")
-    private List<Member> members = new ArrayList<>();
+    private List<Member2> members = new ArrayList<>();
+
+    public Team2(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
