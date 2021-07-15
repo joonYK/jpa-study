@@ -29,4 +29,12 @@ public class Member2 {
         this.id = id;
         this.username = username;
     }
+
+    public void setTeam(Team2 team) {
+        if(this.team != null)
+            this.team.getMembers().remove(this);
+
+        this.team = team;
+        team.getMembers().add(this);
+    }
 }
