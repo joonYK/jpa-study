@@ -12,7 +12,7 @@
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test/test"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test/example"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 
             <!-- 하이버네이트 옵션 -->
@@ -26,6 +26,8 @@
             <property name="hibernate.id.new_generator_mappings" value="true"/>
             <!-- 스키마 자동 생성 기능 -->
             <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!-- 인용 부호로 테이블과 컬럼을 감싸서 ddl 생성 실행 (예약어 피함) -->
+            <property name="hibernate.globally_quoted_identifiers" value="true"/>
 
         </properties>
     </persistence-unit>

@@ -35,25 +35,21 @@ public class ExampleMain {
     public static void logic(EntityManager em) {
         Member member = new Member("준엽", "city", "street", "12314");
         em.persist(member);
-        em.flush();
 
         Order order = new Order();
         order.setMember(member);
         order.setStatus(OrderStatus.ORDER);
         em.persist(order);
-        em.flush();
 
-        /*
         Item item = new Item("goods", 1000, 10);
         em.persist(item);
-        em.flush();
 
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setOrder(order);
         orderItem.setOrderPrice(item.getPrice());
         orderItem.setCount(1);
-        em.persist(orderItem);*/
+        em.persist(orderItem);
     }
 
 }
