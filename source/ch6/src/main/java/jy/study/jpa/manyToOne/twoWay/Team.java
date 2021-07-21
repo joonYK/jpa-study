@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Team2 {
+public class Team {
 
     @Id
     @GeneratedValue
@@ -20,9 +20,9 @@ public class Team2 {
     private String name;
 
     @OneToMany(mappedBy = "team")
-    private List<Member2> members = new ArrayList<>();
+    private List<Member> members = new ArrayList<>();
 
-    public void addMember(Member2 member) {
+    public void addMember(Member member) {
         this.members.add(member);
         if (member.getTeam() != this)
             member.setTeam(this);

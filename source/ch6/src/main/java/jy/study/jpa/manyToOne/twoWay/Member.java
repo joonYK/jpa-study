@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class Member2 {
+public class Member {
 
     @Id
     @GeneratedValue
@@ -19,9 +19,9 @@ public class Member2 {
 
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
-    private Team2 team;
+    private Team team;
 
-    public void setTeam(Team2 team) {
+    public void setTeam(Team team) {
         this.team = team;
 
         if (!team.getMembers().contains(this))

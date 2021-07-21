@@ -1,4 +1,4 @@
-package jy.study.jpa.manyToOne.oneWay;
+package jy.study.jpa.oneToMany.oneWay;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 public class Main {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manyToOne-oneWay");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("oneToMany-oneWay");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -25,13 +25,18 @@ public class Main {
     }
 
     static void insert(EntityManager em) {
+        Member member1 = new Member();
+        member1.setUsername("회원1");
+        Member member2 = new Member();
+        member2.setUsername("회원2");
+
         Team team = new Team();
         team.setName("팀");
-        em.persist(team);
+        team.getMembers().add(member1);
+        team.getMembers().add(member2);
 
-        Member member = new Member();
-        member.setUsername("회원");
-        member.setTeam(team);
-        em.persist(member);
+        em.persist(member1);
+        em.persist(member2);
+        em.persist(team);
     }
 }

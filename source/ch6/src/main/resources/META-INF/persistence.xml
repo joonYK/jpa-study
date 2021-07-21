@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              version="2.1">
-    <persistence-unit name="manyToOne">
+    <persistence-unit name="manyToOne-oneWay">
         <class>jy.study.jpa.manyToOne.oneWay.Member</class>
         <class>jy.study.jpa.manyToOne.oneWay.Team</class>
-        <class>jy.study.jpa.manyToOne.twoWay.Member2</class>
-        <class>jy.study.jpa.manyToOne.twoWay.Team2</class>
 
         <properties>
             <!-- 필수 속성 -->
@@ -30,7 +28,64 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="oneToMany">
+    <persistence-unit name="manyToOne-twoWay">
+        <class>jy.study.jpa.manyToOne.twoWay.Member</class>
+        <class>jy.study.jpa.manyToOne.twoWay.Team</class>
+
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test/test"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- 하이버네이트 옵션 -->
+            <!-- 하이버네이트가 실행한 SQL을 출력 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <!-- 하이버네이트가 실행한 SQL을 출력할 때 보기좋게 정렬 -->
+            <property name="hibernate.format_sql" value="true"/>
+            <!-- 쿼리를 출력할 때 주석도 함께 출력 -->
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- JPA 표준에 맞춘 새로운 키 생성 전략 사용 -->
+            <property name="hibernate.id.new_generator_mappings" value="true"/>
+            <!-- 스키마 자동 생성 기능 -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="oneToMany-oneWay">
+        <class>jy.study.jpa.oneToMany.oneWay.Member</class>
+        <class>jy.study.jpa.oneToMany.oneWay.Team</class>
+        <class>jy.study.jpa.oneToMany.twoWay.Member</class>
+        <class>jy.study.jpa.oneToMany.twoWay.Team</class>
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test/test"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- 하이버네이트 옵션 -->
+            <!-- 하이버네이트가 실행한 SQL을 출력 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <!-- 하이버네이트가 실행한 SQL을 출력할 때 보기좋게 정렬 -->
+            <property name="hibernate.format_sql" value="true"/>
+            <!-- 쿼리를 출력할 때 주석도 함께 출력 -->
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- JPA 표준에 맞춘 새로운 키 생성 전략 사용 -->
+            <property name="hibernate.id.new_generator_mappings" value="true"/>
+            <!-- 스키마 자동 생성 기능 -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="oneToMany-twoWay">
+        <class>jy.study.jpa.oneToMany.twoWay.Member</class>
+        <class>jy.study.jpa.oneToMany.twoWay.Team</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 public class Main {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manyToOne");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("manyToOne-twoWay");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -26,11 +26,11 @@ public class Main {
     }
 
     static void insert(EntityManager em) {
-        Team2 team = new Team2();
+        Team team = new Team();
         team.setName("팀");
         em.persist(team);
 
-        Member2 member = new Member2();
+        Member member = new Member();
         member.setUsername("회원");
         member.setTeam(team);
         em.persist(member);
