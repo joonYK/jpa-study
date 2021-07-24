@@ -13,11 +13,12 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table(name = "ORDERS")
 public class Order {
 
     @Id
     @GeneratedValue
-    @Column(name = "order_id")
+    @Column(name = "ORDER_ID")
     private Long id;
 
     //주문 날짜
@@ -30,11 +31,15 @@ public class Order {
     private OrderStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "DELIVERY_ID")
+    private Delivery delivery;
 
     public void setMember(Member member) {
         if (this.member != null)
@@ -47,5 +52,10 @@ public class Order {
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
         orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        this.delivery.setOrder(this);
     }
 }

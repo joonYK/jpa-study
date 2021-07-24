@@ -10,12 +10,12 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "order_item")
+@Table(name = "ORDER_ITEM")
 public class OrderItem {
 
     @Id
     @GeneratedValue
-    @Column(name = "order_item_id")
+    @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
     //주문 가격
@@ -25,11 +25,11 @@ public class OrderItem {
     private int count;
 
     @ManyToOne
-    @JoinColumn(name = "item_id")
+    @JoinColumn(name = "ITEM_ID")
     private Item item;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "ORDER_ID")
     private Order order;
 
 }

@@ -6,6 +6,8 @@
         <class>jy.study.jpa.example.entity.Member</class>
         <class>jy.study.jpa.example.entity.Order</class>
         <class>jy.study.jpa.example.entity.OrderItem</class>
+        <class>jy.study.jpa.example.entity.Category</class>
+        <class>jy.study.jpa.example.entity.Delivery</class>
 
         <properties>
             <!-- 필수 속성 -->

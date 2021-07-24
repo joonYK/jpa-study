@@ -12,11 +12,11 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "MEMBER")
 public class Member {
     @Id
-    @GeneratedValue
-    @Column(name = "member_id")
-    private Long id;
+    @Column(name = "MEMBER_ID")
+    private String id;
 
     private String name;
 
@@ -24,7 +24,8 @@ public class Member {
     private String street;
     private String zipcode;
 
-    public Member(String name, String city, String street, String zipcode) {
+    public Member(String id, String name, String city, String street, String zipcode) {
+        this.id = id;
         this.name = name;
         this.city = city;
         this.street = street;
