@@ -5,4 +5,5 @@ include 'ch2'
 include 'example'
 include 'ch5'
 include 'ch6'
+include 'ch7'
 
