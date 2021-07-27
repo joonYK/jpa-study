@@ -1,4 +1,4 @@
-package jy.study.jpa.tablePerClass;
+package jy.study.jpa.inheritance.singleTable;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @Entity
+@DiscriminatorValue("M")
 public class Movie extends Item {
 
     private String director;

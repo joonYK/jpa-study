@@ -1,4 +1,4 @@
-package jy.study.jpa.join;
+package jy.study.jpa.inheritance.join;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,9 +9,8 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue("M")
-public class Movie extends Item {
+@DiscriminatorValue("A")
+public class Album extends Item {
 
-    private String director;
-    private String actor;
+    private String artist;
 }

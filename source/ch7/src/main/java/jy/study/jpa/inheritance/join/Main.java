@@ -1,4 +1,4 @@
-package jy.study.jpa.tablePerClass;
+package jy.study.jpa.inheritance.join;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 public class Main {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("inheritance-tablePerClass");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("inheritance-join");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 

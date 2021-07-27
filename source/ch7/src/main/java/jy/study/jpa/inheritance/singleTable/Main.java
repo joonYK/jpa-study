@@ -1,4 +1,4 @@
-package jy.study.jpa.singleTable;
+package jy.study.jpa.inheritance.singleTable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

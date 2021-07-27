@@ -1,4 +1,4 @@
-package jy.study.jpa.singleTable;
+package jy.study.jpa.inheritance.singleTable;
 
 import lombok.Getter;
 import lombok.Setter;
