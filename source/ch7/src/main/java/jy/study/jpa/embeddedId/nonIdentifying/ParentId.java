@@ -1,4 +1,4 @@
-package jy.study.jpa.embeddedId;
+package jy.study.jpa.embeddedId.nonIdentifying;
 
 
 import lombok.*;
