@@ -1,4 +1,4 @@
-package jy.study.jpa.idClass;
+package jy.study.jpa.idClass.nonIdentifying;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 public class Main {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("idClass");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("idClass-nonIdentifying");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 

@@ -1,4 +1,4 @@
-package jy.study.jpa.idClass;
+package jy.study.jpa.idClass.nonIdentifying;
 
 import lombok.Getter;
 import lombok.Setter;
