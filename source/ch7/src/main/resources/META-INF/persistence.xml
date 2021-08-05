@@ -224,4 +224,32 @@
 
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="no-identification">
+        <class>jy.study.jpa.noIdentification.Parent</class>
+        <class>jy.study.jpa.noIdentification.Child</class>
+        <class>jy.study.jpa.noIdentification.GrandChild</class>
+
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test/test"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- 하이버네이트 옵션 -->
+            <!-- 하이버네이트가 실행한 SQL을 출력 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <!-- 하이버네이트가 실행한 SQL을 출력할 때 보기좋게 정렬 -->
+            <property name="hibernate.format_sql" value="true"/>
+            <!-- 쿼리를 출력할 때 주석도 함께 출력 -->
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- JPA 표준에 맞춘 새로운 키 생성 전략 사용 -->
+            <property name="hibernate.id.new_generator_mappings" value="true"/>
+            <!-- 스키마 자동 생성 기능 -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+        </properties>
+    </persistence-unit>
 </persistence>
