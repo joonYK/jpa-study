@@ -115,9 +115,9 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="idClass-nonIdentifying">
-        <class>jy.study.jpa.idClass.nonIdentifying.Parent</class>
-        <class>jy.study.jpa.idClass.nonIdentifying.Child</class>
+    <persistence-unit name="noIdentification-multi-idClass">
+        <class>jy.study.jpa.noIdentification.multi.idClass.Parent</class>
+        <class>jy.study.jpa.noIdentification.multi.idClass.Child</class>
 
         <properties>
             <!-- 필수 속성 -->
@@ -142,9 +142,9 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="embeddedId-nonIdentifying">
-        <class>jy.study.jpa.embeddedId.nonIdentifying.Parent</class>
-        <class>jy.study.jpa.embeddedId.nonIdentifying.Child</class>
+    <persistence-unit name="noIdentification-multi-embeddedId">
+        <class>jy.study.jpa.noIdentification.multi.embeddedId.Parent</class>
+        <class>jy.study.jpa.noIdentification.multi.embeddedId.Child</class>
 
         <properties>
             <!-- 필수 속성 -->
@@ -169,10 +169,10 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="idClass-identifying">
-        <class>jy.study.jpa.idClass.identifying.Parent</class>
-        <class>jy.study.jpa.idClass.identifying.Child</class>
-        <class>jy.study.jpa.idClass.identifying.GrandChild</class>
+    <persistence-unit name="identification-multi-idClass">
+        <class>jy.study.jpa.identification.multi.idClass.Parent</class>
+        <class>jy.study.jpa.identification.multi.idClass.Child</class>
+        <class>jy.study.jpa.identification.multi.idClass.GrandChild</class>
 
         <properties>
             <!-- 필수 속성 -->
@@ -197,10 +197,10 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="embeddedId-identifying">
-        <class>jy.study.jpa.embeddedId.identifying.Parent</class>
-        <class>jy.study.jpa.embeddedId.identifying.Child</class>
-        <class>jy.study.jpa.embeddedId.identifying.GrandChild</class>
+    <persistence-unit name="identification-multi-embeddedId">
+        <class>jy.study.jpa.identification.multi.embeddedId.Parent</class>
+        <class>jy.study.jpa.identification.multi.embeddedId.Child</class>
+        <class>jy.study.jpa.identification.multi.embeddedId.GrandChild</class>
 
         <properties>
             <!-- 필수 속성 -->
@@ -225,10 +225,10 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="no-identification">
-        <class>jy.study.jpa.noIdentification.Parent</class>
-        <class>jy.study.jpa.noIdentification.Child</class>
-        <class>jy.study.jpa.noIdentification.GrandChild</class>
+    <persistence-unit name="noIdentification-noMulti">
+        <class>jy.study.jpa.noIdentification.noMulti.Parent</class>
+        <class>jy.study.jpa.noIdentification.noMulti.Child</class>
+        <class>jy.study.jpa.noIdentification.noMulti.GrandChild</class>
 
         <properties>
             <!-- 필수 속성 -->
@@ -253,9 +253,9 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="oneToOne-identification">
-        <class>jy.study.jpa.oneToOneIdentification.Board</class>
-        <class>jy.study.jpa.oneToOneIdentification.BoardDetail</class>
+    <persistence-unit name="identification-noMulti">
+        <class>jy.study.jpa.identification.noMulti.Board</class>
+        <class>jy.study.jpa.identification.noMulti.BoardDetail</class>
 
         <properties>
             <!-- 필수 속성 -->
