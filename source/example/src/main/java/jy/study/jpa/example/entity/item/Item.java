@@ -1,5 +1,7 @@
-package jy.study.jpa.example.entity;
+package jy.study.jpa.example.entity.item;
 
+import jy.study.jpa.example.entity.BaseEntity;
+import jy.study.jpa.example.entity.Category;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,10 +12,12 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "DTYPE")
 @Table(name = "ITEM")
-public class Item {
+public abstract class Item extends BaseEntity {
 
     @Id
     @GeneratedValue

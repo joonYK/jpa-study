@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "DELIVERY")
-public class Delivery {
+public class Delivery extends BaseEntity {
 
     @Id
     @GeneratedValue

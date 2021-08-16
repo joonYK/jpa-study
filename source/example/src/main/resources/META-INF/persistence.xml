@@ -2,7 +2,10 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              version="2.1">
     <persistence-unit name="jpa-study-example">
-        <class>jy.study.jpa.example.entity.Item</class>
+        <class>jy.study.jpa.example.entity.item.Item</class>
+        <class>jy.study.jpa.example.entity.item.Album</class>
+        <class>jy.study.jpa.example.entity.item.Book</class>
+        <class>jy.study.jpa.example.entity.item.Movie</class>
         <class>jy.study.jpa.example.entity.Member</class>
         <class>jy.study.jpa.example.entity.Order</class>
         <class>jy.study.jpa.example.entity.OrderItem</class>

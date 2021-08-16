@@ -1,7 +1,7 @@
 package jy.study.jpa.example.entity;
 
+import jy.study.jpa.example.entity.item.Item;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,9 +9,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
 @Table(name = "ORDER_ITEM")
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -31,5 +30,4 @@ public class OrderItem {
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
-
 }

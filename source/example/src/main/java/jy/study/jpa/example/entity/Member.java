@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "MEMBER")
-public class Member {
+public class Member extends BaseEntity {
     @Id
     @Column(name = "MEMBER_ID")
     private String id;

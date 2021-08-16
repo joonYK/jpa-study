@@ -1,5 +1,6 @@
 package jy.study.jpa.example.entity;
 
+import jy.study.jpa.example.entity.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "CATEGORY")
-public class Category {
+public class Category extends BaseEntity {
 
     @Id
     @GeneratedValue
