@@ -83,24 +83,23 @@ public class ExampleMain {
         delivery.setStreet(member.getStreet());
         delivery.setZipcode(member.getZipcode());
         delivery.setStatus(DeliveryStatus.READY);
-        em.persist(delivery);
 
         //주문
         Order order = new Order();
         order.setMember(member);
         order.setDelivery(delivery);
         order.setStatus(OrderStatus.ORDER);
-        em.persist(order);
 
         //주문상품
         for (Item item : items) {
             OrderItem orderItem = new OrderItem();
             orderItem.setItem(item);
-            orderItem.setOrder(order);
             orderItem.setOrderPrice(item.getPrice());
             orderItem.setCount(1);
-            em.persist(orderItem);
+            order.addOrderItem(orderItem);
         }
+
+        em.persist(order);
     }
 
 }
