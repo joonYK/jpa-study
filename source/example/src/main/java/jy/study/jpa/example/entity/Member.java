@@ -1,5 +1,6 @@
 package jy.study.jpa.example.entity;
 
+import jy.study.jpa.example.value.Address;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,16 +21,13 @@ public class Member extends BaseEntity {
 
     private String name;
 
-    private String city;
-    private String street;
-    private String zipcode;
+    @Embedded
+    private Address address;
 
     public Member(String id, String name, String city, String street, String zipcode) {
         this.id = id;
         this.name = name;
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
+        this.address = new Address(city, street, zipcode);
     }
 
     @OneToMany(mappedBy = "member")

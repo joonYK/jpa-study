@@ -7,6 +7,7 @@ import jy.study.jpa.example.entity.item.Item;
 import jy.study.jpa.example.entity.item.Movie;
 import jy.study.jpa.example.type.DeliveryStatus;
 import jy.study.jpa.example.type.OrderStatus;
+import jy.study.jpa.example.value.Address;
 
 import javax.persistence.*;
 import java.util.List;
@@ -79,9 +80,13 @@ public class ExampleMain {
 
         //배송
         Delivery delivery = new Delivery();
-        delivery.setCity(member.getCity());
-        delivery.setStreet(member.getStreet());
-        delivery.setZipcode(member.getZipcode());
+        delivery.setAddress(
+                new Address(
+                        member.getAddress().getCity(),
+                        member.getAddress().getStreet(),
+                        member.getAddress().getZipcode()
+                )
+        );
         delivery.setStatus(DeliveryStatus.READY);
 
         //주문
