@@ -4,12 +4,14 @@ import jy.study.jpa.jpql.domain.value.Address;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Getter
 @Entity(name = "ORDERS")
 @NoArgsConstructor
+@ToString(exclude = {"member", "product"})
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
