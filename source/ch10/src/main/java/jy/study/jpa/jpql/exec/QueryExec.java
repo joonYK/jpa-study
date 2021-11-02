@@ -25,7 +25,7 @@ public class QueryExec {
     }
 
     private static void query(EntityManager em) {
-        Query query = em.createQuery("SELECT m.username, m.age FROM Member m");
+        javax.persistence.Query query = em.createQuery("SELECT m.username, m.age FROM Member m");
         List resultList = query.getResultList();
 
         for (Object o : resultList) {

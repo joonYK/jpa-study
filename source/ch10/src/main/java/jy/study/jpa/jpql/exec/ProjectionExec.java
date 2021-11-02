@@ -7,7 +7,7 @@ import lombok.Getter;
 import javax.persistence.*;
 import java.util.List;
 
-public class Projection {
+public class ProjectionExec {
 
     @Getter
     static class UserDTO {
