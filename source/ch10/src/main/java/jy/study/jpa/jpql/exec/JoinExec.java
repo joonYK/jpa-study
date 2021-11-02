@@ -46,7 +46,7 @@ public class JoinExec {
                 .getResultList();
 
         for (Member member : members) {
-            System.out.println(member);
+            System.out.println("username = " + member.getUsername() + ", " + "teamname = " + member.getTeam().getName());
         }
     }
 
