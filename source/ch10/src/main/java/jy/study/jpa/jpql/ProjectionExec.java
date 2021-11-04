@@ -1,7 +1,7 @@
-package jy.study.jpa.jpql.exec;
+package jy.study.jpa.jpql;
 
-import jy.study.jpa.jpql.domain.Member;
-import jy.study.jpa.jpql.domain.Product;
+import jy.study.jpa.domain.Member;
+import jy.study.jpa.domain.Product;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -21,7 +21,7 @@ public class ProjectionExec {
     }
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpql");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch10");
         EntityManager em = emf.createEntityManager();
 
         System.out.println("여러 프로젝션");

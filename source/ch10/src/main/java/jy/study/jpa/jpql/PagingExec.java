@@ -1,6 +1,6 @@
-package jy.study.jpa.jpql.exec;
+package jy.study.jpa.jpql;
 
-import jy.study.jpa.jpql.domain.Product;
+import jy.study.jpa.domain.Product;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,7 +11,7 @@ import java.util.List;
 public class PagingExec {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpql");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch10");
         EntityManager em = emf.createEntityManager();
 
         paging(em);

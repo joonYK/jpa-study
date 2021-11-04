@@ -1,6 +1,6 @@
-package jy.study.jpa.jpql.domain;
+package jy.study.jpa.domain;
 
-import jy.study.jpa.jpql.domain.value.Address;
+import jy.study.jpa.domain.value.Address;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

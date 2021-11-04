@@ -1,7 +1,7 @@
-package jy.study.jpa.jpql.exec;
+package jy.study.jpa.jpql;
 
-import jy.study.jpa.jpql.domain.Member;
-import jy.study.jpa.jpql.domain.Team;
+import jy.study.jpa.domain.Member;
+import jy.study.jpa.domain.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,7 +11,7 @@ import java.util.List;
 public class JoinExec {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpql");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch10");
         EntityManager em = emf.createEntityManager();
 
         System.out.println("내부 조인");

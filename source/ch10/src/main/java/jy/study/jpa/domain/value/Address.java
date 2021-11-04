@@ -1,4 +1,4 @@
-package jy.study.jpa.jpql.domain.value;
+package jy.study.jpa.domain.value;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

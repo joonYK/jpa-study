@@ -1,4 +1,4 @@
-package jy.study.jpa.jpql.domain;
+package jy.study.jpa.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

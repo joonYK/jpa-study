@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              version="2.1">
-    <persistence-unit name="jpql">
-        <class>jy.study.jpa.jpql.domain.Member</class>
-        <class>jy.study.jpa.jpql.domain.Product</class>
-        <class>jy.study.jpa.jpql.domain.Order</class>
-        <class>jy.study.jpa.jpql.domain.Team</class>
+    <persistence-unit name="ch10">
+        <class>jy.study.jpa.domain.Member</class>
+        <class>jy.study.jpa.domain.Product</class>
+        <class>jy.study.jpa.domain.Order</class>
+        <class>jy.study.jpa.domain.Team</class>
 
         <properties>
             <!-- 필수 속성 -->

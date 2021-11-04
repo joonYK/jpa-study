@@ -1,6 +1,6 @@
-package jy.study.jpa.jpql.exec;
+package jy.study.jpa.jpql;
 
-import jy.study.jpa.jpql.domain.Member;
+import jy.study.jpa.domain.Member;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class QueryExec {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpql");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch10");
         EntityManager em = emf.createEntityManager();
 
         typedQuery(em);
