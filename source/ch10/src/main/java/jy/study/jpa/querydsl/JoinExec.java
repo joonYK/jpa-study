@@ -1,8 +1,6 @@
 package jy.study.jpa.querydsl;
 
-import com.querydsl.core.QueryFactory;
 import com.querydsl.core.Tuple;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jy.study.jpa.domain.*;
 
@@ -23,6 +21,10 @@ public class JoinExec {
 
         System.out.println("조인 on 사용");
         joinOn(em);
+        System.out.println();
+
+        System.out.println("페치 조인");
+        fetchJoin(em, emf);
         System.out.println();
     }
 
@@ -56,5 +58,22 @@ public class JoinExec {
         for (Tuple tuple : result) {
             System.out.println("tuple = " + tuple);
         }
+    }
+
+    private static void fetchJoin(EntityManager em, EntityManagerFactory emf) {
+        QMember member = QMember.member;
+        QTeam team = QTeam.team;
+
+        Member findMember = new JPAQueryFactory(em)
+                .selectFrom(member)
+                .join(member.team, team).fetchJoin()
+                .where(member.id.eq("member1"))
+                .fetchOne();
+
+        System.out.println(findMember);
+
+        boolean loaded = emf.getPersistenceUnitUtil().isLoaded(findMember.getTeam());
+        System.out.println(loaded);
+
     }
 }
