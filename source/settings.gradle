@@ -8,4 +8,5 @@ include 'ch6'
 include 'ch7'
 include 'ch8'
 include 'ch10'
+include 'querydsl'
 
