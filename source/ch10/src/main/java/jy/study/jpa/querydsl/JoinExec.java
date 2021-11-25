@@ -3,6 +3,10 @@ package jy.study.jpa.querydsl;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jy.study.jpa.domain.*;
+import jy.study.jpa.domain.QMember;
+import jy.study.jpa.domain.QOrder;
+import jy.study.jpa.domain.QProduct;
+import jy.study.jpa.domain.QTeam;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
