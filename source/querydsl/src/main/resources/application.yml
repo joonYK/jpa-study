@@ -12,6 +12,8 @@ spring:
       hibernate:
         # show_sql: true
         format_sql: true
+        # 실행되는 JPQL 쿼리 주석 확인
+        use_sql_comments: true
 
 logging.level:
   org.hibernate.SQL: debug
