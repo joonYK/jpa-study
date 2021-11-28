@@ -2,6 +2,7 @@ package jy.study.jpa.querydsl;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jy.study.jpa.querydsl.entity.Member;
+import jy.study.jpa.querydsl.entity.QMember;
 import jy.study.jpa.querydsl.entity.Team;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+
+import java.util.List;
 
 import static jy.study.jpa.querydsl.entity.QMember.member;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -62,5 +65,34 @@ public class QuerydslBasicTest {
                 .fetchOne();
 
         assertThat(findMember.getUsername()).isEqualTo("member1");
+    }
+
+    @Test
+    public void search() {
+        Member findMember = queryFactory
+                .selectFrom(QMember.member)
+                .where(QMember.member.username.eq("member1")
+                        .and(QMember.member.age.eq(10)))
+                .fetchOne();
+
+        assertThat(findMember.getUsername()).isEqualTo("member1");
+
+    }
+
+    @Test
+    public void searchAndParam() {
+        List<Member> members = queryFactory
+                .selectFrom(QMember.member)
+                .where(
+                        QMember.member.username.startsWith("member"),
+                        QMember.member.age.in(10, 20)
+                )
+                .fetch();
+
+        for (Member findMember : members) {
+            assertThat(findMember.getUsername()).isIn("member1", "member2");
+            assertThat(findMember.getAge()).isIn(10, 20);
+        }
+
     }
 }
