@@ -1,5 +1,6 @@
 package jy.study.jpa.querydsl;
 
+import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jy.study.jpa.querydsl.entity.Member;
 import jy.study.jpa.querydsl.entity.QMember;
@@ -93,6 +94,37 @@ public class QuerydslBasicTest {
             assertThat(findMember.getUsername()).isIn("member1", "member2");
             assertThat(findMember.getAge()).isIn(10, 20);
         }
+    }
 
+    @Test
+    public void resultFetch() {
+        System.out.println("fetch : 모든 회원 조회");
+        List<Member> fetch = queryFactory
+                .selectFrom(member)
+                .fetch();
+
+        System.out.println("fetchOne : 단 건 조회");
+        Member fetchOne = queryFactory
+                .selectFrom(QMember.member)
+                .where(member.username.eq("member1"))
+                .fetchOne();
+
+        System.out.println("fetchFirst : limit(1).fetchOne()");
+        Member fetchFirst = queryFactory
+                .selectFrom(QMember.member)
+                .fetchFirst();
+
+        System.out.println("fetchResults : 페이징용 쿼리. total count 조회 쿼리 따로 호출.");
+        QueryResults<Member> fetchResults = queryFactory
+                .selectFrom(member)
+                .fetchResults();
+
+        long total = fetchResults.getTotal();
+        List<Member> results = fetchResults.getResults();
+
+        System.out.println("fetchCount : count 쿼리");
+        long count = queryFactory
+                .selectFrom(member)
+                .fetchCount();
     }
 }
