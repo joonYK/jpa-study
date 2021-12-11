@@ -14,6 +14,7 @@ import jy.study.jpa.querydsl.entity.Member;
 import jy.study.jpa.querydsl.entity.QMember;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.annotation.Commit;
 
 import java.util.List;
 
@@ -213,4 +214,50 @@ public class QuerydslIntermediateTest extends BaseQuerydslTest {
         return usernameEq(usernameCond).and(ageEq(ageCond));
     }
 
+    @Test
+    @Commit
+    public void bulkUpdate() {
+        //member1 = 10 -> DB 비회원
+        //member2 = 20 -> DB 비회원
+        //member3 = 30 -> DB member3
+        //member4 = 40 -> DB member4
+
+        //영속성 컨텍스트를 무시하는 문제가 있음.
+        //영속성 컨텍스트가 우선시되어서 DB에서 조회를 해도 영속성 컨텍스트의 데이터를 가져오고 DB에서 조회한 데이터는 버려짐.
+        //그래서 member1, member2는 여전히 각각 member1, member2.
+        long count = queryFactory
+                .update(member)
+                .set(member.username, "비회원")
+                .where(member.age.lt(28))
+                .execute();
+
+        //영속성 컨텍스트 초기화 권장
+        em.flush();
+        em.clear();
+
+        List<Member> members = queryFactory
+                .selectFrom(member)
+                .fetch();
+
+        for (Member member1 : members) {
+            System.out.println("member1 = " + member1);
+        }
+    }
+
+    @Test
+    public void bulkAdd() {
+        queryFactory
+                .update(member)
+                //.set(member.age, member.age.add(1))
+                .set(member.age, member.age.multiply(2))
+                .execute();
+    }
+
+    @Test
+    public void bulkDelete() {
+        queryFactory
+                .delete(member)
+                .where(member.age.gt(18))
+                .execute();
+    }
 }
