@@ -6,6 +6,8 @@ import jy.study.jpa.querydsl.dto.MemberTeamDto;
 import jy.study.jpa.querydsl.entity.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -42,4 +44,18 @@ public class MemberRepositoryTest extends BaseQuerydslTest {
 
         assertThat(result).extracting("username").containsExactly("member4");
     }
+
+    @Test
+    public void searchPageTest() {
+        MemberSearchCondition condition = new MemberSearchCondition();
+        PageRequest pageRequest = PageRequest.of(0, 3);
+
+        Page<MemberTeamDto> result = memberRepository.searchPage(condition, pageRequest);
+
+        assertThat(result.getSize()).isEqualTo(3);
+        assertThat(result.getContent()).extracting("username").containsExactly("member1", "member2", "member3");
+        assertThat(result.getTotalElements()).isEqualTo(4);
+    }
+
+
 }
