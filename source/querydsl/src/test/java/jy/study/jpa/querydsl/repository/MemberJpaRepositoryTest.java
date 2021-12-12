@@ -4,19 +4,14 @@ import jy.study.jpa.querydsl.BaseQuerydslTest;
 import jy.study.jpa.querydsl.dto.MemberSearchCondition;
 import jy.study.jpa.querydsl.dto.MemberTeamDto;
 import jy.study.jpa.querydsl.entity.Member;
-import jy.study.jpa.querydsl.entity.Team;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MemberJpaRepositoryTest extends BaseQuerydslTest {
-
-    @Autowired
-    EntityManager em;
 
     @Autowired
     MemberJpaRepository memberJpaRepository;
