@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
+import static jy.study.jpa.querydsl.entity.QMember.member;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MemberRepositoryTest extends BaseQuerydslTest {
@@ -57,5 +58,19 @@ public class MemberRepositoryTest extends BaseQuerydslTest {
         assertThat(result.getTotalElements()).isEqualTo(4);
     }
 
+    @Test
+    public void querydslPredicateExecutorTest() {
+        /*
+         * 클라이언트가 Querydsl 구현 기술에 의존하게 되는 단점이 존재.
+         * repository 계층 밖에서 predicate 를 생성하고 넘겨줘야 함.
+         */
+        Iterable<Member> result = memberRepository.findAll(
+                member.age.between(10, 40)
+                        .and(member.username.eq("member1"))
+        );
+        for (Member member1 : result) {
+            System.out.println("member1 = " + member1);
+        }
 
+    }
 }
