@@ -73,4 +73,26 @@ public class MemberRepositoryTest extends BaseQuerydslTest {
         }
 
     }
+
+    @Test
+    public void search2Test() {
+        MemberSearchCondition condition = new MemberSearchCondition();
+        condition.setTeamName("teamA");
+
+        List<MemberTeamDto> result = memberRepository.search(condition);
+
+        assertThat(result).extracting("username").containsExactly("member1", "member2");
+    }
+
+    @Test
+    public void searchPage2Test() {
+        MemberSearchCondition condition = new MemberSearchCondition();
+        PageRequest pageRequest = PageRequest.of(0, 3);
+
+        Page<MemberTeamDto> result = memberRepository.searchPage(condition, pageRequest);
+
+        assertThat(result.getSize()).isEqualTo(3);
+        assertThat(result.getContent()).extracting("username").containsExactly("member1", "member2", "member3");
+        assertThat(result.getTotalElements()).isEqualTo(4);
+    }
 }
