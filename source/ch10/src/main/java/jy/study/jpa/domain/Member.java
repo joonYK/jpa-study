@@ -14,6 +14,24 @@ import javax.persistence.*;
     entities = {@EntityResult(entityClass = Member.class)},
     columns = {@ColumnResult(name = "ORDER_COUNT")}
 )
+@NamedNativeQuery(
+        name = "Member.memberSQL",
+        query = "SELECT ID, AGE, USERNAME, TEAM_ID " +
+                "FROM MEMBER WHERE AGE > ?",
+        resultClass = Member.class
+)
+@NamedNativeQuery(
+        name = "Member.memberWithOrderCount",
+        query = "SELECT M.ID, AGE, USERNAME, TEAM_ID, I.ORDER_COUNT " +
+                "FROM MEMBER M " +
+                "LEFT JOIN " +
+                "   (SELECT IM.ID, COUNT(*) AS ORDER_COUNT " +
+                "   FROM ORDERS O, MEMBER IM " +
+                "   WHERE O.MEMBER_ID = IM.ID" +
+                "   GROUP BY IM.ID) I " +
+                "ON M.ID = I.ID",
+        resultSetMapping = "memberWithOrderCount"
+)
 public class Member {
 
     @Id

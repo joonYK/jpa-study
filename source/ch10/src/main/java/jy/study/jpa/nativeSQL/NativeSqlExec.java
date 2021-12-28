@@ -1,4 +1,4 @@
-package jy.study.jpa.nativeQuery;
+package jy.study.jpa.nativeSQL;
 
 import jy.study.jpa.domain.Member;
 
@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import java.math.BigInteger;
 import java.util.List;
 
-public class NativeQueryExec {
+public class NativeSqlExec {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch10");
