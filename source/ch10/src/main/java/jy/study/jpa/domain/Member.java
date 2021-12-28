@@ -10,6 +10,10 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @ToString(exclude = "team")
+@SqlResultSetMapping(name = "memberWithOrderCount",
+    entities = {@EntityResult(entityClass = Member.class)},
+    columns = {@ColumnResult(name = "ORDER_COUNT")}
+)
 public class Member {
 
     @Id
