@@ -5,7 +5,6 @@ import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
@@ -13,15 +12,13 @@ import org.springframework.data.jpa.repository.support.JpaEntityInformationSuppo
 import org.springframework.data.jpa.repository.support.Querydsl;
 import org.springframework.data.querydsl.SimpleEntityPathResolver;
 import org.springframework.data.support.PageableExecutionUtils;
-import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
-import javax.annotation.PostConstruct;
+
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.function.Function;
 
-@Repository
-public class Querydsl4RepositorySupport {
+public abstract class Querydsl4RepositorySupport {
 
     private final Class domainClass;
 
@@ -31,12 +28,13 @@ public class Querydsl4RepositorySupport {
 
     private JPAQueryFactory queryFactory;
 
-    public Querydsl4RepositorySupport(Class<?> domainClass) {
+    public Querydsl4RepositorySupport(Class<?> domainClass, EntityManager entityManager) {
         Assert.notNull(domainClass, "Domain class must not be null!");
         this.domainClass = domainClass;
+        setEntityManager(entityManager);
+        validate();
     }
 
-    @Autowired
     public void setEntityManager(EntityManager entityManager) {
         Assert.notNull(entityManager, "EntityManager must not be null!");
         JpaEntityInformation entityInformation = JpaEntityInformationSupport.getEntityInformation(domainClass, entityManager);
@@ -47,7 +45,6 @@ public class Querydsl4RepositorySupport {
         this.queryFactory = new JPAQueryFactory(entityManager);
     }
 
-    @PostConstruct
     public void validate() {
         Assert.notNull(entityManager, "EntityManager must not be null!");
         Assert.notNull(querydsl, "Querydsl must not be null!");

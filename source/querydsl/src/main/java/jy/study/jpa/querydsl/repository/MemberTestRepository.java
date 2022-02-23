@@ -7,20 +7,24 @@ import com.querydsl.jpa.impl.JPAQuery;
 import jy.study.jpa.querydsl.dto.MemberSearchCondition;
 import jy.study.jpa.querydsl.entity.Member;
 import jy.study.jpa.querydsl.repository.support.Querydsl4RepositorySupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.support.PageableExecutionUtils;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 import static jy.study.jpa.querydsl.entity.QMember.member;
 import static jy.study.jpa.querydsl.entity.QTeam.team;
 import static org.springframework.util.StringUtils.hasText;
 
+@Repository
 public class MemberTestRepository extends Querydsl4RepositorySupport {
 
-    public MemberTestRepository() {
-        super(Member.class);
+    public MemberTestRepository(EntityManager entityManager) {
+        super(Member.class, entityManager);
     }
 
     public List<Member> basicSelect() {
