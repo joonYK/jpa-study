@@ -1,6 +1,8 @@
 package jy.study.jpa.querydsl.repository;
 
+import com.querydsl.core.Tuple;
 import jy.study.jpa.querydsl.BaseQuerydslTest;
+import jy.study.jpa.querydsl.dto.ItemCountDto;
 import jy.study.jpa.querydsl.dto.ItemDto;
 import jy.study.jpa.querydsl.entity.Item;
 import jy.study.jpa.querydsl.entity.ItemCategory;
@@ -17,7 +19,7 @@ class ItemRepositoryTest extends BaseQuerydslTest {
     ItemRepository itemRepository;
 
     @Test
-    public void test() {
+    public void transformGroupby() {
         Item item1 = new Item("아이템1");
         Item item2 = new Item("아이템2");
         Item item3 = new Item("아이템3");
@@ -44,5 +46,26 @@ class ItemRepositoryTest extends BaseQuerydslTest {
         List<ItemDto> itemDtoList = itemRepository.getItemDtoList(categoryIds);
 
         System.out.println(itemDtoList);
+    }
+
+    @Test
+    public void groupByCount() {
+        Item item1 = new Item("아이템1", Item.ItemType.ITEM1);
+        Item item2 = new Item("아이템2", Item.ItemType.ITEM1);
+        Item item3 = new Item("아이템3", Item.ItemType.ITEM2);
+        Item item4 = new Item("아이템4", Item.ItemType.ITEM2);
+        Item item5 = new Item("아이템5");
+        Item item6 = new Item("아이템6");
+
+        em.persist(item1);
+        em.persist(item2);
+        em.persist(item3);
+        em.persist(item4);
+        em.persist(item5);
+        em.persist(item6);
+
+        List<Tuple> tuples = itemRepository.groupByCount();
+        System.out.println(tuples);
+
     }
 }

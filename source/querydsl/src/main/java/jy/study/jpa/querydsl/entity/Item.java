@@ -13,16 +13,27 @@ import java.util.List;
 @AllArgsConstructor
 public class Item {
 
+    public enum ItemType {
+        ITEM1, ITEM2
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String itemName;
 
+    public ItemType itemType;
+
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemCategory> categories = new ArrayList<>();
 
     public Item(String itemName) {
         this.itemName = itemName;
+    }
+
+    public Item(String itemName, ItemType itemType) {
+        this.itemName = itemName;
+        this.itemType = itemType;
     }
 }

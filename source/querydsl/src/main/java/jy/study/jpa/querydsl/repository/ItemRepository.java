@@ -1,9 +1,12 @@
 package jy.study.jpa.querydsl.repository;
 
+import com.querydsl.core.Tuple;
 import com.querydsl.core.group.GroupBy;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jy.study.jpa.querydsl.dto.ItemCategoryDto;
+import jy.study.jpa.querydsl.dto.ItemCountDto;
 import jy.study.jpa.querydsl.dto.ItemDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -11,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 import static com.querydsl.core.group.GroupBy.groupBy;
-import static com.querydsl.core.types.Projections.list;
 import static jy.study.jpa.querydsl.entity.QItem.item;
 import static jy.study.jpa.querydsl.entity.QItemCategory.itemCategory;
 
@@ -41,5 +43,19 @@ public class ItemRepository {
                         )
                     )
                 );
+    }
+
+    public List<Tuple> groupByCount() {
+        return queryFactory.select(
+                        item.itemType,
+                        new CaseBuilder()
+                            .when(item.itemType.isNull())
+                            .then("NULL")
+                            .otherwise(item.itemType.stringValue())
+                            .count()
+                        )
+                    .from(item)
+                    .groupBy(item.itemType)
+                    .fetch();
     }
 }
