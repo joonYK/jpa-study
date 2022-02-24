@@ -54,7 +54,7 @@ class ItemRepositoryTest extends BaseQuerydslTest {
         Item item2 = new Item("아이템2", Item.ItemType.ITEM1);
         Item item3 = new Item("아이템3", Item.ItemType.ITEM2);
         Item item4 = new Item("아이템4", Item.ItemType.ITEM2);
-        Item item5 = new Item("아이템5");
+        Item item5 = new Item("아이템5", Item.ItemType.ITEM2);
         Item item6 = new Item("아이템6");
 
         em.persist(item1);
@@ -67,5 +67,13 @@ class ItemRepositoryTest extends BaseQuerydslTest {
         List<Tuple> tuples = itemRepository.groupByCount();
         System.out.println(tuples);
 
+        for (Tuple tuple : tuples) {
+            System.out.println(tuple.get(0, String.class));
+            System.out.println(tuple.get(1, Long.class));
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Item.ItemType.ITEM1.ordinal());
     }
 }

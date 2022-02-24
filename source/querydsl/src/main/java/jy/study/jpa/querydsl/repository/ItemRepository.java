@@ -8,6 +8,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import jy.study.jpa.querydsl.dto.ItemCategoryDto;
 import jy.study.jpa.querydsl.dto.ItemCountDto;
 import jy.study.jpa.querydsl.dto.ItemDto;
+import jy.study.jpa.querydsl.entity.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -47,15 +48,18 @@ public class ItemRepository {
 
     public List<Tuple> groupByCount() {
         return queryFactory.select(
-                        item.itemType,
-                        new CaseBuilder()
-                            .when(item.itemType.isNull())
-                            .then("NULL")
-                            .otherwise(item.itemType.stringValue())
-                            .count()
-                        )
-                    .from(item)
-                    .groupBy(item.itemType)
-                    .fetch();
+                new CaseBuilder()
+                    .when(item.itemType.isNull())
+                    .then("ITEM3")
+                    .otherwise(item.itemType.stringValue()),
+                new CaseBuilder()
+                    .when(item.itemType.isNull())
+                    .then("NULL")
+                    .otherwise(item.itemType.stringValue())
+                    .count()
+                )
+                .from(item)
+                .groupBy(item.itemType)
+                .fetch();
     }
 }

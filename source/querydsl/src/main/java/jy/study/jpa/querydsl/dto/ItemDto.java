@@ -1,6 +1,5 @@
 package jy.study.jpa.querydsl.dto;
 
-import jy.study.jpa.querydsl.entity.ItemCategory;
 import lombok.Getter;
 import lombok.Setter;
 
